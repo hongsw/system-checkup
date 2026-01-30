@@ -216,13 +216,23 @@ This project was developed through **11 iterative prompts** using Claude Code. S
 
 ## 🗺️ Roadmap
 
+### 🎯 High Priority
+
+- [ ] **Cross-platform support** (Windows/macOS)
+  1. Implement platform-specific system check commands
+     - Windows: PowerShell, `wmic`, `systeminfo`
+     - macOS: `sysctl`, `diskutil`, `launchctl`
+  2. Add Windows/macOS builds
 - [ ] Auto-refresh functionality
 - [ ] System notifications
+
+### 🌟 Future Enhancements
+
 - [ ] Dark mode support
-- [ ] Multiple AI model selection
+- [ ] Multiple AI model selection (GPT-4, Gemini, etc.)
 - [ ] PDF report export
-- [ ] Multi-language support
-- [ ] Windows/macOS support
+- [ ] Multi-language support (more languages)
+- [ ] Mobile support (Android/iOS)
 
 ## 📄 License
 
@@ -438,13 +448,23 @@ flutter build linux --release
 
 ## 🗺️ 로드맵
 
+### 🎯 우선순위 높음
+
+- [ ] **크로스 플랫폼 지원** (Windows/macOS)
+  1. 플랫폼별 시스템 점검 명령어 구현
+     - Windows: PowerShell, `wmic`, `systeminfo`
+     - macOS: `sysctl`, `diskutil`, `launchctl`
+  2. Windows/macOS 빌드 추가
 - [ ] 자동 새로고침
 - [ ] 시스템 알림
+
+### 🌟 향후 개선 사항
+
 - [ ] 다크 모드
-- [ ] 여러 AI 모델 선택
+- [ ] 여러 AI 모델 선택 (GPT-4, Gemini 등)
 - [ ] PDF 보고서 내보내기
-- [ ] 다국어 지원
-- [ ] Windows/macOS 지원
+- [ ] 다국어 지원 (더 많은 언어)
+- [ ] 모바일 지원 (Android/iOS)
 
 ## 📄 라이선스
 

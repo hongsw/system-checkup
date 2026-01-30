@@ -98,6 +98,29 @@ flutter run -d linux
 flutter build linux
 ```
 
+### Install as systemd Service (Auto-start on Login)
+
+```bash
+# Install service
+./system-checkup-manage.sh install
+
+# Check status
+./system-checkup-manage.sh status
+
+# See all available commands
+./system-checkup-manage.sh help
+```
+
+**Management Commands:**
+- `status` - Check service status
+- `start/stop/restart` - Control service
+- `enable/disable` - Auto-start on/off
+- `logs` - View real-time logs
+- `rebuild` - Rebuild and restart
+- `uninstall` - Remove service
+
+See [SYSTEMD_SETUP.md](SYSTEMD_SETUP.md) for details.
+
 ## ⚙️ Configuration
 
 ### Get Claude API Key
@@ -284,6 +307,29 @@ flutter run -d linux
 # 릴리즈 빌드
 flutter build linux
 ```
+
+### systemd 서비스로 설치 (로그인 시 자동 시작)
+
+```bash
+# 서비스 설치
+./system-checkup-manage.sh install
+
+# 상태 확인
+./system-checkup-manage.sh status
+
+# 모든 명령어 보기
+./system-checkup-manage.sh help
+```
+
+**관리 명령어:**
+- `status` - 서비스 상태 확인
+- `start/stop/restart` - 서비스 제어
+- `enable/disable` - 자동 시작 켜기/끄기
+- `logs` - 실시간 로그 보기
+- `rebuild` - 다시 빌드하고 재시작
+- `uninstall` - 서비스 제거
+
+자세한 내용은 [SYSTEMD_SETUP.md](SYSTEMD_SETUP.md)를 참조하세요.
 
 ## ⚙️ 설정
 

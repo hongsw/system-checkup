@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/storage_service.dart';
+import '../services/autostart_service.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -14,6 +15,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _isLoading = true;
   bool _apiKeyVisible = false;
   bool _hasChanges = false;
+  bool _autostartEnabled = false;
 
   @override
   void initState() {
@@ -36,11 +38,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     final apiKey = await StorageService.getApiKey();
     final prompt = await StorageService.getSystemPrompt();
+    final autostartEnabled = await AutostartService.isEnabled();
 
     _apiKeyController.text = apiKey ?? '';
     _promptController.text = prompt;
 
     setState(() {
+      _autostartEnabled = autostartEnabled;
       _isLoading = false;
       _hasChanges = false;
     });
@@ -102,6 +106,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const SnackBar(
             content: Text('프롬프트가 초기화되었습니다'),
             backgroundColor: Colors.green,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _toggleAutostart(bool value) async {
+    final success = await AutostartService.toggle(value);
+
+    if (success) {
+      setState(() => _autostartEnabled = value);
+      await StorageService.setAutostartEnabled(value);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(value ? '✓ 자동 시작이 활성화되었습니다' : '✓ 자동 시작이 비활성화되었습니다'),
+            backgroundColor: Colors.green,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('자동 시작 설정에 실패했습니다'),
+            backgroundColor: Colors.red,
+            duration: Duration(seconds: 2),
           ),
         );
       }
@@ -263,6 +296,46 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         alignLabelWithHint: true,
                       ),
                     ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // 자동 시작 섹션
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.power_settings_new, color: Colors.purple),
+                      const SizedBox(width: 8),
+                      Text(
+                        '자동 시작',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    '로그인 시 자동으로 System Checkup을 실행합니다.',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  const SizedBox(height: 16),
+                  SwitchListTile(
+                    title: const Text('로그인 시 자동 실행'),
+                    subtitle: Text(
+                      _autostartEnabled
+                          ? '활성화됨 - 로그인할 때마다 자동으로 실행됩니다'
+                          : '비활성화됨 - 수동으로 실행해야 합니다',
+                    ),
+                    value: _autostartEnabled,
+                    onChanged: _toggleAutostart,
+                    activeColor: Colors.purple,
                   ),
                 ],
               ),

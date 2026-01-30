@@ -5,6 +5,7 @@ class StorageService {
   static const _storage = FlutterSecureStorage();
   static const _apiKeyKey = 'claude_api_key';
   static const _systemPromptKey = 'system_prompt';
+  static const _autostartKey = 'autostart_enabled';
 
   // 기본 시스템 프롬프트
   static const defaultSystemPrompt = '''당신은 리눅스 시스템 관리 전문가입니다.
@@ -50,5 +51,17 @@ class StorageService {
   static Future<void> resetSystemPrompt() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_systemPromptKey);
+  }
+
+  // 자동 시작 설정 저장
+  static Future<void> setAutostartEnabled(bool enabled) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_autostartKey, enabled);
+  }
+
+  // 자동 시작 설정 불러오기
+  static Future<bool> getAutostartEnabled() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_autostartKey) ?? false;
   }
 }

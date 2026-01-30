@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../services/storage_service.dart';
 import '../services/autostart_service.dart';
 
@@ -135,6 +136,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
             content: Text('자동 시작 설정에 실패했습니다'),
             backgroundColor: Colors.red,
             duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _launchUrl(String urlString) async {
+    final url = Uri.parse(urlString);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('URL을 열 수 없습니다: $urlString'),
+            backgroundColor: Colors.red,
           ),
         );
       }
@@ -372,8 +389,180 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
           ),
+          const SizedBox(height: 16),
+
+          // 앱 정보 섹션
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.info_outline, color: Colors.blue),
+                      const SizedBox(width: 8),
+                      Text(
+                        '앱 정보',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  ListTile(
+                    leading: const Icon(Icons.tag, color: Colors.blue),
+                    title: const Text('버전'),
+                    subtitle: const Text('1.0.0'),
+                    dense: true,
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.description, color: Colors.blue),
+                    title: const Text('설명'),
+                    subtitle: const Text('AI 기반 Linux 시스템 모니터링 도구'),
+                    dense: true,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // 개발자 정보 섹션
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.code, color: Colors.green),
+                      const SizedBox(width: 8),
+                      Text(
+                        '개발자',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  ListTile(
+                    leading: const Icon(Icons.person, color: Colors.green),
+                    title: const Text('hongsw'),
+                    subtitle: const Text('GitHub: @hongsw'),
+                    dense: true,
+                  ),
+                  const SizedBox(height: 8),
+                  OutlinedButton.icon(
+                    onPressed: () => _launchUrl('https://github.com/hongsw/system-checkup'),
+                    icon: const Icon(Icons.link),
+                    label: const Text('GitHub 저장소'),
+                  ),
+                  const SizedBox(height: 8),
+                  OutlinedButton.icon(
+                    onPressed: () => _launchUrl('https://github.com/hongsw/system-checkup/issues'),
+                    icon: const Icon(Icons.bug_report),
+                    label: const Text('버그 신고 / 기능 제안'),
+                  ),
+                  const SizedBox(height: 8),
+                  ElevatedButton.icon(
+                    onPressed: () => _launchUrl('https://github.com/sponsors/hongsw'),
+                    icon: const Icon(Icons.favorite),
+                    label: const Text('개발자 후원하기'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.pink.shade100,
+                      foregroundColor: Colors.pink.shade900,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // 사용된 라이브러리 섹션
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.library_books, color: Colors.orange),
+                      const SizedBox(width: 8),
+                      Text(
+                        '사용된 라이브러리',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    '이 앱은 오픈소스 라이브러리를 사용하여 만들어졌습니다.',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  const SizedBox(height: 16),
+                  _buildLibraryTile(
+                    'Flutter',
+                    'Google의 크로스 플랫폼 UI 프레임워크',
+                    'https://flutter.dev',
+                  ),
+                  _buildLibraryTile(
+                    'http (^1.1.0)',
+                    'HTTP 요청을 위한 패키지',
+                    'https://pub.dev/packages/http',
+                  ),
+                  _buildLibraryTile(
+                    'flutter_secure_storage (^9.0.0)',
+                    'API 키를 안전하게 저장',
+                    'https://pub.dev/packages/flutter_secure_storage',
+                  ),
+                  _buildLibraryTile(
+                    'shared_preferences (^2.2.2)',
+                    '앱 설정 저장',
+                    'https://pub.dev/packages/shared_preferences',
+                  ),
+                  _buildLibraryTile(
+                    'flutter_markdown (^0.7.4+1)',
+                    'AI 분석 결과를 마크다운으로 렌더링',
+                    'https://pub.dev/packages/flutter_markdown',
+                  ),
+                  _buildLibraryTile(
+                    'url_launcher (^6.2.4)',
+                    'URL 열기',
+                    'https://pub.dev/packages/url_launcher',
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    '모든 라이브러리 개발자분들께 감사드립니다! 🙏',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.grey.shade600,
+                        ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
+    );
+  }
+
+  Widget _buildLibraryTile(String name, String description, String url) {
+    return ListTile(
+      leading: const Icon(Icons.code, size: 20, color: Colors.orange),
+      title: Text(
+        name,
+        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+      ),
+      subtitle: Text(description, style: const TextStyle(fontSize: 12)),
+      trailing: IconButton(
+        icon: const Icon(Icons.open_in_new, size: 18),
+        onPressed: () => _launchUrl(url),
+        tooltip: 'pub.dev에서 보기',
+      ),
+      dense: true,
     );
   }
 

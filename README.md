@@ -8,7 +8,7 @@
 
 # Linux System Checkup with AI Analysis
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/yourusername/system-checkup/releases)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/hongsw/system-checkup/releases)
 [![Flutter](https://img.shields.io/badge/flutter-3.27.3-blue)](https://flutter.dev)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -85,7 +85,7 @@ source ~/.bashrc
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/system-checkup.git
+git clone https://github.com/hongsw/system-checkup.git
 cd system_checkup
 
 # Install dependencies
@@ -191,8 +191,8 @@ MIT License - see [LICENSE](LICENSE) file for details
 
 ## 📧 Contact
 
-- Issues: [GitHub Issues](https://github.com/yourusername/system-checkup/issues)
-- Discussions: [GitHub Discussions](https://github.com/yourusername/system-checkup/discussions)
+- Issues: [GitHub Issues](https://github.com/hongsw/system-checkup/issues)
+- Discussions: [GitHub Discussions](https://github.com/hongsw/system-checkup/discussions)
 
 ---
 
@@ -259,7 +259,7 @@ source ~/.bashrc
 
 ```bash
 # 저장소 클론
-git clone https://github.com/yourusername/system-checkup.git
+git clone https://github.com/hongsw/system-checkup.git
 cd system_checkup
 
 # 의존성 설치
@@ -354,8 +354,8 @@ MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일 참조
 
 ## 📧 연락처
 
-- 이슈: [GitHub Issues](https://github.com/yourusername/system-checkup/issues)
-- 토론: [GitHub Discussions](https://github.com/yourusername/system-checkup/discussions)
+- 이슈: [GitHub Issues](https://github.com/hongsw/system-checkup/issues)
+- 토론: [GitHub Discussions](https://github.com/hongsw/system-checkup/discussions)
 
 ---
 

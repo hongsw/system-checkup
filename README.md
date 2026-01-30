@@ -15,6 +15,19 @@
 
 A beautiful Linux desktop application for system monitoring with AI-powered analysis using Claude Opus 4.5.
 
+> **🚀 Looking for Contributors!** We welcome contributions of all kinds. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+## 📸 Screenshots
+
+### Main System Checkup
+![Main Screen](screenshots/main-screen.png)
+
+### AI Analysis Results
+![AI Analysis](screenshots/ai-analysis.png)
+
+### Analysis History
+![History List](screenshots/history-list.png)
+
 ## ✨ Features
 
 ### 🔍 System Monitoring (8 Items)
@@ -42,19 +55,6 @@ A beautiful Linux desktop application for system monitoring with AI-powered anal
 ### 🔒 Security
 - **Secure Storage** - API keys encrypted with Linux keyring (libsecret)
 - **Auto-save** - Settings saved automatically
-
-## 📸 Screenshots
-
-<!-- Add your screenshots here -->
-```
-screenshots/
-├── main-screen.png          # Main system checkup screen
-├── ai-analysis.png          # AI analysis results
-├── history-list.png         # Analysis history list
-└── settings.png             # Settings screen
-```
-
-*Screenshots will be added soon. You can contribute by adding them!*
 
 ## 🚀 Quick Start
 
@@ -149,7 +149,7 @@ We're looking for contributors! Here's how you can help:
 ### Ways to Contribute
 - 🐛 **Bug Reports** - Found a bug? Open an issue!
 - 💡 **Feature Requests** - Have ideas? We'd love to hear!
-- 📸 **Screenshots** - Help us add beautiful screenshots
+- 📸 **Screenshots** - Help us add more beautiful screenshots
 - 🌍 **Translations** - Add more language support
 - 📝 **Documentation** - Improve docs and guides
 - 💻 **Code** - Submit pull requests
@@ -201,6 +201,19 @@ MIT License - see [LICENSE](LICENSE) file for details
 # 한국어 가이드
 
 Linux 시스템 점검 및 AI 분석 GUI 애플리케이션입니다.
+
+> **🚀 컨트리뷰터를 찾고 있습니다!** 모든 종류의 기여를 환영합니다. 자세한 내용은 [CONTRIBUTING.md](CONTRIBUTING.md)를 참조하세요.
+
+## 📸 스크린샷
+
+### 메인 시스템 점검 화면
+![메인 화면](screenshots/main-screen.png)
+
+### AI 분석 결과
+![AI 분석](screenshots/ai-analysis.png)
+
+### 분석 이력
+![이력 목록](screenshots/history-list.png)
 
 ## ✨ 주요 기능
 
@@ -312,7 +325,7 @@ flutter build linux
 ### 기여 방법
 - 🐛 **버그 리포트** - 버그를 발견하셨나요? 이슈를 열어주세요!
 - 💡 **기능 제안** - 아이디어가 있으신가요? 알려주세요!
-- 📸 **스크린샷** - 멋진 스크린샷 추가를 도와주세요
+- 📸 **스크린샷** - 더 많은 멋진 스크린샷 추가를 도와주세요
 - 🌍 **번역** - 다양한 언어 지원 추가
 - 📝 **문서화** - 문서와 가이드 개선
 - 💻 **코드** - Pull Request 제출

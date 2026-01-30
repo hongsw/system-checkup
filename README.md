@@ -1,40 +1,236 @@
-# System Checkup - Linux 시스템 점검 GUI 애플리케이션
+# System Checkup 🔍
 
-Flutter로 개발된 Linux 시스템 상태 점검 및 AI 분석 GUI 애플리케이션입니다.
+[English](#english) | [한국어](#korean)
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Flutter](https://img.shields.io/badge/flutter-3.27.3-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+---
 
-## 📋 주요 기능
+<a name="english"></a>
 
-### 1. 시스템 자동 점검
-- ⚡ **부팅 정보**: 마지막 부팅 시간, 가동 시간
-- 💾 **디스크 사용량**: 사용률 경고 (90% 이상 빨간색)
-- 🧠 **메모리 사용량**: RAM 및 SWAP 상태
-- ⚙️ **CPU 부하**: 1분/5분/15분 평균
-- 🔧 **서비스 상태**: 실패한 systemd 서비스 확인
-- 🌐 **네트워크 연결**: 인터넷 연결 상태
-- 🐛 **크래시 보고서**: /var/crash 파일 확인
-- 🔄 **재부팅 이력**: 최근 재부팅 기록
+# Linux System Checkup with AI Analysis
 
-### 2. AI 분석 (Claude Opus 4.5)
-- 🤖 **지능형 분석**: Claude Opus 4.5가 시스템 상태를 분석
-- 📝 **마크다운 뷰**: 보기 좋은 형식으로 결과 표시
-- 💡 **구체적인 조언**: 실행 가능한 명령어와 해결책 제공
-- ⚙️ **프롬프트 커스터마이징**: 분석 방식을 원하는 대로 수정
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/yourusername/system-checkup/releases)
+[![Flutter](https://img.shields.io/badge/flutter-3.27.3-blue)](https://flutter.dev)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-### 3. 분석 이력 관리
-- 📅 **날짜별 정리**: "오늘", "어제" 등으로 자동 그룹화
-- 💾 **자동 저장**: 최대 50개 이력 저장
-- 🔍 **상세 보기**: 과거 분석 결과 언제든지 확인
-- 🗑️ **이력 관리**: 개별/전체 삭제 기능
+A beautiful Linux desktop application for system monitoring with AI-powered analysis using Claude Opus 4.5.
 
-### 4. 보안
-- 🔒 **안전한 키 저장**: Linux keyring (libsecret)을 사용한 API 키 암호화
-- 🔐 **자동 저장**: API 키와 프롬프트 자동 저장
+## ✨ Features
 
-## 🚀 설치 방법
+### 🔍 System Monitoring (8 Items)
+- **Boot Information** - Last boot time and uptime
+- **Disk Usage** - Storage usage with warnings (>90% red alert)
+- **Memory Usage** - RAM and SWAP status
+- **CPU Load** - 1/5/15 minute averages
+- **Service Status** - Failed systemd services detection
+- **Network Connection** - Internet connectivity check
+- **Crash Reports** - System crash report monitoring
+- **Reboot History** - Recent reboot records
+
+### 🤖 AI Analysis (Claude Opus 4.5)
+- **Intelligent Analysis** - Claude Opus 4.5 powered system analysis
+- **Markdown View** - Beautiful formatted results
+- **Actionable Advice** - Specific commands and solutions
+- **Custom Prompts** - Customize analysis style
+
+### 📊 History Management
+- **Date Grouping** - Organized by "Today", "Yesterday", etc.
+- **Auto-save** - Up to 50 analysis histories
+- **Detail View** - Review past analysis anytime
+- **Easy Management** - Individual/bulk deletion
+
+### 🔒 Security
+- **Secure Storage** - API keys encrypted with Linux keyring (libsecret)
+- **Auto-save** - Settings saved automatically
+
+## 📸 Screenshots
+
+<!-- Add your screenshots here -->
+```
+screenshots/
+├── main-screen.png          # Main system checkup screen
+├── ai-analysis.png          # AI analysis results
+├── history-list.png         # Analysis history list
+└── settings.png             # Settings screen
+```
+
+*Screenshots will be added soon. You can contribute by adding them!*
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+```bash
+# Install Flutter development tools
+sudo apt install -y clang cmake ninja-build pkg-config libgtk-3-dev
+
+# Install security storage library
+sudo apt install -y libsecret-1-dev
+```
+
+### Install Flutter
+
+```bash
+# Download Flutter SDK
+cd ~
+wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.27.3-stable.tar.xz
+tar xf flutter_linux_3.27.3-stable.tar.xz
+
+# Add to PATH
+echo 'export PATH="$HOME/flutter/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### Run the Application
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/system-checkup.git
+cd system_checkup
+
+# Install dependencies
+flutter pub get
+
+# Run on Linux
+flutter run -d linux
+
+# Build release
+flutter build linux
+```
+
+## ⚙️ Configuration
+
+### Get Claude API Key
+
+1. Visit [Anthropic Console](https://console.anthropic.com)
+2. Create an API key
+3. Open the app and click **Settings (⚙️)**
+4. Enter your API key (auto-saved)
+5. Customize prompt (optional)
+
+## 📖 Usage
+
+### Basic Workflow
+
+1. **Launch app** → Auto system checkup
+2. **Click purple button** → "Request AI Analysis"
+3. AI analyzes with Claude Opus 4.5
+4. **View results** in markdown format
+5. **Check history (🕐)** for past analyses
+
+### UI Navigation
+
+#### Main Screen (Top Bar)
+- 🕐 **History** - View analysis history
+- ⭐ **AI Analysis** - New analysis
+- 🔄 **Refresh** - Re-check system
+- ⚙️ **Settings** - API key & prompts
+
+#### History Screen
+- Date-grouped analysis list
+- Status-colored indicators (Normal/Warning/Error)
+- Individual/bulk deletion
+
+## 🛠️ Tech Stack
+
+- **Framework**: Flutter 3.27.3
+- **Language**: Dart 3.6.1
+- **AI Model**: Claude Opus 4.5
+- **Key Packages**:
+  - `http` - API communication
+  - `flutter_secure_storage` - Secure key storage
+  - `shared_preferences` - Settings management
+  - `flutter_markdown` - Markdown rendering
+
+## 🤝 Contributing
+
+We're looking for contributors! Here's how you can help:
+
+### Ways to Contribute
+- 🐛 **Bug Reports** - Found a bug? Open an issue!
+- 💡 **Feature Requests** - Have ideas? We'd love to hear!
+- 📸 **Screenshots** - Help us add beautiful screenshots
+- 🌍 **Translations** - Add more language support
+- 📝 **Documentation** - Improve docs and guides
+- 💻 **Code** - Submit pull requests
+
+### Getting Started
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+## 📝 Development
+
+This project was developed through **11 iterative prompts** using Claude Code. See [DEVELOPMENT.md](DEVELOPMENT.md) for the complete development process.
+
+## 🗺️ Roadmap
+
+- [ ] Auto-refresh functionality
+- [ ] System notifications
+- [ ] Dark mode support
+- [ ] Multiple AI model selection
+- [ ] PDF report export
+- [ ] Multi-language support
+- [ ] Windows/macOS support
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details
+
+## 🙏 Acknowledgments
+
+- [Anthropic](https://www.anthropic.com) - Claude API
+- [Flutter Team](https://flutter.dev) - Amazing framework
+- Linux Community
+- All contributors
+
+## 📧 Contact
+
+- Issues: [GitHub Issues](https://github.com/yourusername/system-checkup/issues)
+- Discussions: [GitHub Discussions](https://github.com/yourusername/system-checkup/discussions)
+
+---
+
+<a name="korean"></a>
+
+# 한국어 가이드
+
+Linux 시스템 점검 및 AI 분석 GUI 애플리케이션입니다.
+
+## ✨ 주요 기능
+
+### 🔍 시스템 점검 (8가지 항목)
+- **부팅 정보** - 마지막 부팅 시간, 가동 시간
+- **디스크 사용량** - 사용률 경고 (90% 이상 빨간색)
+- **메모리 사용량** - RAM 및 SWAP 상태
+- **CPU 부하** - 1분/5분/15분 평균
+- **서비스 상태** - 실패한 systemd 서비스
+- **네트워크 연결** - 인터넷 연결 상태
+- **크래시 보고서** - 시스템 크래시 확인
+- **재부팅 이력** - 최근 재부팅 기록
+
+### 🤖 AI 분석 (Claude Opus 4.5)
+- **지능형 분석** - Claude Opus 4.5 기반
+- **마크다운 뷰** - 보기 좋은 결과 표시
+- **구체적 조언** - 실행 가능한 명령어 제공
+- **프롬프트 커스터마이징** - 분석 방식 수정 가능
+
+### 📊 이력 관리
+- **날짜별 정리** - "오늘", "어제" 등으로 그룹화
+- **자동 저장** - 최대 50개 이력 저장
+- **상세 보기** - 과거 분석 결과 확인
+- **간편 관리** - 개별/전체 삭제
+
+### 🔒 보안
+- **안전한 저장** - Linux keyring으로 API 키 암호화
+- **자동 저장** - 설정 자동 저장
+
+## 🚀 빠른 시작
 
 ### 사전 요구사항
 
@@ -52,8 +248,6 @@ sudo apt install -y libsecret-1-dev
 # Flutter SDK 다운로드
 cd ~
 wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.27.3-stable.tar.xz
-
-# 압축 해제
 tar xf flutter_linux_3.27.3-stable.tar.xz
 
 # PATH 추가
@@ -61,17 +255,17 @@ echo 'export PATH="$HOME/flutter/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-### 프로젝트 실행
+### 앱 실행
 
 ```bash
-# 프로젝트 클론
-git clone <repository-url>
+# 저장소 클론
+git clone https://github.com/yourusername/system-checkup.git
 cd system_checkup
 
 # 의존성 설치
 flutter pub get
 
-# Linux 데스크톱에서 실행
+# Linux에서 실행
 flutter run -d linux
 
 # 릴리즈 빌드
@@ -80,147 +274,91 @@ flutter build linux
 
 ## ⚙️ 설정
 
-### Claude API 키 설정
+### Claude API 키 발급
 
-1. [Anthropic Console](https://console.anthropic.com)에서 API 키 발급
-2. 앱 실행 후 **설정 아이콘(⚙️)** 클릭
-3. API 키 입력 (자동 저장됨)
-4. 프롬프트 수정 (선택사항)
+1. [Anthropic Console](https://console.anthropic.com) 방문
+2. API 키 생성
+3. 앱 실행 후 **설정 아이콘(⚙️)** 클릭
+4. API 키 입력 (자동 저장됨)
+5. 프롬프트 수정 (선택사항)
 
-## 📱 사용 방법
+## 📖 사용 방법
 
 ### 기본 사용 흐름
 
 1. **앱 실행** → 시스템 자동 점검
-2. **보라색 큰 버튼** 클릭 → "AI 분석 요청하기"
-3. AI가 시스템 상태 분석 (Claude Opus 4.5)
+2. **보라색 버튼** 클릭 → "AI 분석 요청하기"
+3. Claude Opus 4.5로 분석
 4. **마크다운 형식**으로 결과 확인
 5. **이력 버튼(🕐)** 으로 과거 분석 확인
 
 ### 화면 구성
 
-#### 메인 화면
-- 🕐 **이력**: 분석 이력 보기
-- ⭐ **AI 분석**: 새로운 분석 실행
-- 🔄 **새로고침**: 시스템 재점검
-- ⚙️ **설정**: API 키 및 프롬프트
+#### 메인 화면 (상단 버튼)
+- 🕐 **이력** - 분석 이력 보기
+- ⭐ **AI 분석** - 새로운 분석
+- 🔄 **새로고침** - 시스템 재점검
+- ⚙️ **설정** - API 키 및 프롬프트
 
 #### 이력 화면
-- 날짜별 그룹화된 분석 이력
+- 날짜별 그룹화된 분석 목록
 - 상태별 색상 표시 (정상/경고/오류)
 - 개별/전체 삭제 기능
 
-## 🛠️ 기술 스택
+## 🤝 기여하기
 
-- **Framework**: Flutter 3.27.3
-- **Language**: Dart 3.6.1
-- **AI Model**: Claude Opus 4.5 (claude-opus-4-5-20251101)
-- **Packages**:
-  - `http`: API 통신
-  - `flutter_secure_storage`: 안전한 키 저장
-  - `shared_preferences`: 설정 저장
-  - `flutter_markdown`: 마크다운 렌더링
+컨트리뷰터를 찾고 있습니다! 다음과 같이 도와주실 수 있습니다:
 
-## 📊 개발 과정
+### 기여 방법
+- 🐛 **버그 리포트** - 버그를 발견하셨나요? 이슈를 열어주세요!
+- 💡 **기능 제안** - 아이디어가 있으신가요? 알려주세요!
+- 📸 **스크린샷** - 멋진 스크린샷 추가를 도와주세요
+- 🌍 **번역** - 다양한 언어 지원 추가
+- 📝 **문서화** - 문서와 가이드 개선
+- 💻 **코드** - Pull Request 제출
 
-### 총 개발 프롬프트: 11개
+### 시작하기
 
-이 프로젝트는 **11개의 프롬프트**를 통해 단계적으로 개발되었습니다:
+1. 저장소 포크
+2. 기능 브랜치 생성 (`git checkout -b feature/멋진기능`)
+3. 변경사항 커밋 (`git commit -m '멋진 기능 추가'`)
+4. 브랜치에 푸시 (`git push origin feature/멋진기능`)
+5. Pull Request 오픈
 
-#### Phase 1: 프로젝트 초기화 (프롬프트 1-2)
-1. Flutter 프로젝트 생성 및 Linux 환경 설정
-2. 기존 Bash 스크립트를 Flutter GUI로 전환
+자세한 가이드는 [CONTRIBUTING.md](CONTRIBUTING.md)를 참조하세요.
 
-#### Phase 2: 시스템 점검 기능 (프롬프트 2-4)
-3. 8가지 시스템 점검 항목 구현
-4. Material Design 3 UI 디자인
-5. 비동기 병렬 처리로 빠른 점검
+## 📝 개발 과정
 
-#### Phase 3: AI 통합 (프롬프트 5-6)
-6. Claude API 연동
-7. 보안 저장소 (libsecret) 구현
-8. 설정 화면 및 프롬프트 커스터마이징
+이 프로젝트는 Claude Code를 사용하여 **11개의 프롬프트**를 통해 개발되었습니다. 전체 개발 과정은 [DEVELOPMENT.md](DEVELOPMENT.md)를 참조하세요.
 
-#### Phase 4: UX 개선 (프롬프트 7-9)
-9. 자동 저장 기능 추가
-10. Claude Opus 4.5 모델 적용
-11. 마크다운 뷰 및 큰 분석 버튼 추가
+## 🗺️ 로드맵
 
-#### Phase 5: 이력 관리 (프롬프트 10)
-12. 분석 이력 자동 저장
-13. 날짜별 그룹화 및 관리 화면
-
-#### Phase 6: 문서화 (프롬프트 11)
-14. Git 저장소 초기화
-15. README 작성 및 버저닝
-
-### 개발 타임라인
-
-```
-프롬프트 1-2:   프로젝트 설정 (Flutter 설치, 환경 구성)
-프롬프트 3-4:   의존성 설치 (libsecret 등)
-프롬프트 5-6:   AI 기능 통합 (Claude API, 보안 저장)
-프롬프트 7:     자동 저장 기능
-프롬프트 8:     모델 업그레이드 (Opus 4.5)
-프롬프트 9:     UI/UX 개선 (마크다운, 큰 버튼)
-프롬프트 10:    이력 관리 시스템
-프롬프트 11:    문서화 및 버저닝
-```
-
-## 📁 프로젝트 구조
-
-```
-lib/
-├── main.dart                          # 메인 앱 및 시스템 점검 화면
-├── models/
-│   └── analysis_history.dart         # 분석 이력 모델
-├── services/
-│   ├── claude_service.dart            # Claude API 서비스
-│   ├── storage_service.dart           # 보안 저장 서비스
-│   └── history_service.dart           # 이력 관리 서비스
-└── screens/
-    ├── settings_screen.dart           # 설정 화면
-    ├── ai_analysis_screen.dart        # AI 분석 결과 화면
-    ├── history_screen.dart            # 분석 이력 목록
-    └── history_detail_screen.dart     # 이력 상세 보기
-```
-
-## 🎨 특징
-
-### Material Design 3
-- 현대적인 디자인 언어
-- 그라데이션 헤더
-- 카드 기반 레이아웃
-
-### 반응형 UI
-- 상태별 색상 구분 (녹색/주황색/빨간색)
-- 아이콘과 상태 표시
-- 부드러운 애니메이션
-
-### 사용자 경험
-- 자동 저장 (별도 버튼 불필요)
-- 직관적인 네비게이션
-- 명확한 피드백 메시지
-
-## 🔮 향후 계획
-
-- [ ] 자동 새로고침 기능
-- [ ] 시스템 알림 통합
-- [ ] 다크 모드 지원
-- [ ] 여러 AI 모델 선택 지원
-- [ ] 보고서 PDF 내보내기
+- [ ] 자동 새로고침
+- [ ] 시스템 알림
+- [ ] 다크 모드
+- [ ] 여러 AI 모델 선택
+- [ ] PDF 보고서 내보내기
 - [ ] 다국어 지원
+- [ ] Windows/macOS 지원
 
 ## 📄 라이선스
 
-MIT License
-
-## 👨‍💻 개발자
-
-Claude Code로 개발됨
+MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일 참조
 
 ## 🙏 감사의 말
 
-- Anthropic Claude API
-- Flutter 팀
+- [Anthropic](https://www.anthropic.com) - Claude API 제공
+- [Flutter Team](https://flutter.dev) - 훌륭한 프레임워크
 - Linux 커뮤니티
+- 모든 기여자분들
+
+## 📧 연락처
+
+- 이슈: [GitHub Issues](https://github.com/yourusername/system-checkup/issues)
+- 토론: [GitHub Discussions](https://github.com/yourusername/system-checkup/discussions)
+
+---
+
+**⭐ 이 프로젝트가 도움이 되셨다면 Star를 눌러주세요!**
+
+**We're looking for contributors!** | **컨트리뷰터를 찾고 있습니다!**

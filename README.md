@@ -58,6 +58,12 @@ A beautiful Linux desktop application for system monitoring with AI-powered anal
 
 ## 🚀 Quick Start
 
+**Choose your installation method:**
+
+- 🏃 **Run directly** - Quick test without installation
+- 📱 **Application menu** - Install as a clickable desktop app (Recommended)
+- ⚙️ **Auto-start service** - Launch automatically on login
+
 ### Prerequisites
 
 ```bash
@@ -96,6 +102,23 @@ flutter run -d linux
 
 # Build release
 flutter build linux
+```
+
+### Install to Application Menu (Click to Run)
+
+```bash
+# Build release first
+flutter build linux --release
+
+# Install to application menu
+./install-desktop.sh
+```
+
+After installation, you can search for "System Checkup" in your **Applications Menu** and run it with a click.
+
+**To uninstall:**
+```bash
+./uninstall-desktop.sh
 ```
 
 ### Install as systemd Service (Auto-start on Login)
@@ -268,6 +291,12 @@ Linux 시스템 점검 및 AI 분석 GUI 애플리케이션입니다.
 
 ## 🚀 빠른 시작
 
+**설치 방법을 선택하세요:**
+
+- 🏃 **바로 실행** - 설치 없이 빠른 테스트
+- 📱 **응용프로그램 메뉴** - 클릭으로 실행하는 데스크톱 앱으로 설치 (권장)
+- ⚙️ **자동 시작 서비스** - 로그인 시 자동으로 실행
+
 ### 사전 요구사항
 
 ```bash
@@ -306,6 +335,23 @@ flutter run -d linux
 
 # 릴리즈 빌드
 flutter build linux
+```
+
+### 응용프로그램 메뉴에 설치 (클릭으로 실행)
+
+```bash
+# 릴리즈 빌드 먼저 필요
+flutter build linux --release
+
+# 응용프로그램 메뉴에 설치
+./install-desktop.sh
+```
+
+설치 후 **응용프로그램 메뉴**에서 "System Checkup" 또는 "시스템 점검"을 검색하여 실행할 수 있습니다.
+
+**제거 방법:**
+```bash
+./uninstall-desktop.sh
 ```
 
 ### systemd 서비스로 설치 (로그인 시 자동 시작)

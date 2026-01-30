@@ -25,6 +25,9 @@ A beautiful Linux desktop application for system monitoring with AI-powered anal
 ### AI Analysis Results
 ![AI Analysis](screenshots/ai-analysis.png)
 
+### Detailed AI Report
+![AI Report](screenshots/aireport-screen.png)
+
 ### Analysis History
 ![History List](screenshots/history-list.png)
 
@@ -267,6 +270,9 @@ Linux 시스템 점검 및 AI 분석 GUI 애플리케이션입니다.
 
 ### AI 분석 결과
 ![AI 분석](screenshots/ai-analysis.png)
+
+### 상세 AI 리포트
+![AI 리포트](screenshots/aireport-screen.png)
 
 ### 분석 이력
 ![이력 목록](screenshots/history-list.png)

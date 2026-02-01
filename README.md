@@ -221,6 +221,11 @@ This project was developed through **11 iterative prompts** using Claude Code. S
 
 ### 🎯 High Priority
 
+- [ ] **Security Monitoring** (v2.0 planned)
+  - Intrusion detection: Failed logins, sudo logs, file modifications
+  - Network security: Firewall status, open ports, SSH config
+  - AI-powered security analysis with threat detection
+  - See [SPEC.md](SPEC.md) for detailed security check specifications
 - [ ] **Cross-platform support** (Windows/macOS)
   1. Implement platform-specific system check commands
      - Windows: PowerShell, `wmic`, `systeminfo`
@@ -456,6 +461,11 @@ flutter build linux --release
 
 ### 🎯 우선순위 높음
 
+- [ ] **보안 모니터링** (v2.0 계획)
+  - 침투 탐지: 로그인 실패 기록, sudo 로그, 파일 변경 감지
+  - 네트워크 보안: 방화벽 상태, 열린 포트, SSH 설정
+  - AI 기반 보안 분석 및 위협 탐지
+  - 자세한 보안 점검 사양은 [SPEC.md](SPEC.md) 참조
 - [ ] **크로스 플랫폼 지원** (Windows/macOS)
   1. 플랫폼별 시스템 점검 명령어 구현
      - Windows: PowerShell, `wmic`, `systeminfo`

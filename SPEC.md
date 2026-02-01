@@ -332,6 +332,95 @@ try {
 
 ## 🚀 Future Enhancements (Out of Scope for v1.0)
 
+### Security Monitoring (v2.0 Planned)
+
+**침투 탐지 (Intrusion Detection)**:
+
+1. **Failed Login Attempts**
+   - Command: `grep "Failed password" /var/log/auth.log 2>/dev/null | tail -20`
+   - Alternative: `lastb -n 20` (failed login database)
+   - Display: Recent failed SSH/login attempts with IP addresses
+   - Warning: Red alert if > 10 failed attempts in last hour
+
+2. **Sudo Usage Log**
+   - Command: `grep "sudo:" /var/log/auth.log 2>/dev/null | tail -15`
+   - Display: Recent sudo command usage with user and timestamp
+   - Purpose: Detect unauthorized privilege escalation
+
+3. **Critical File Modifications**
+   - Command: `find /etc -type f -mtime -1 2>/dev/null | head -20`
+   - Display: System configuration files modified in last 24 hours
+   - Warning: Alert on unexpected changes to /etc/passwd, /etc/shadow, /etc/sudoers
+
+4. **New User Accounts**
+   - Command: `awk -F: '$3 >= 1000 {print $1":"$3":"$7}' /etc/passwd`
+   - Command: `ls -lt /home | head -10`
+   - Display: Recently created user accounts (UID >= 1000)
+   - Warning: Alert on unknown new accounts
+
+5. **Suspicious Processes**
+   - Command: `ps aux --sort=-%mem | head -15`
+   - Command: `ps aux | grep -E "(nc|ncat|netcat|/tmp/)" | grep -v grep`
+   - Display: Processes with unusual names or running from /tmp
+   - Warning: Alert on known malicious process patterns
+
+**네트워크 보안 (Network Security)**:
+
+1. **Firewall Status**
+   - Command: `sudo ufw status verbose` (UFW)
+   - Alternative: `sudo iptables -L -n | head -30` (iptables)
+   - Display: Firewall enabled/disabled status and active rules
+   - Warning: Red alert if firewall is disabled
+
+2. **Open Ports & Listening Services**
+   - Command: `ss -tulnp | grep LISTEN`
+   - Alternative: `netstat -tulnp | grep LISTEN`
+   - Display: All listening ports with associated services
+   - Warning: Alert on unexpected open ports (e.g., 23-Telnet, unusual high ports)
+
+3. **Active Network Connections**
+   - Command: `ss -tunap | grep ESTAB | head -20`
+   - Display: Currently established connections with remote IPs
+   - Purpose: Detect unusual outbound connections
+
+4. **SSH Security Configuration**
+   - Command: `grep -E "^(PermitRootLogin|PasswordAuthentication|Port)" /etc/ssh/sshd_config 2>/dev/null`
+   - Display: SSH security settings
+   - Warning: Alert if PermitRootLogin=yes or PasswordAuthentication=yes
+
+5. **Recent Network Authentication Failures**
+   - Command: `grep -i "authentication failure" /var/log/auth.log 2>/dev/null | tail -15`
+   - Display: Failed authentication attempts with source IPs
+   - Warning: Alert on repeated failures from same IP (potential brute force)
+
+**Implementation Notes**:
+
+- Many commands require sudo privileges - handle permission errors gracefully
+- Add permission request dialog on first security check
+- Store sudo credentials temporarily (with user consent)
+- Add "Security Check" toggle in settings (disabled by default)
+- Update AI prompt to include security analysis when enabled
+- Color coding: Green (secure), Yellow (warning), Red (critical)
+
+**Updated System Prompt for Security Mode**:
+
+```text
+당신은 리눅스 시스템 및 보안 전문가입니다.
+시스템 점검 및 보안 분석 결과를 검토하고 일반 사용자가 이해하기 쉽게 설명해주세요.
+
+다음 형식으로 응답해주세요:
+
+1. **전체 상태 요약** (시스템 상태 및 보안 수준을 한 줄로)
+2. **주요 발견사항** (중요한 문제, 보안 경고사항, 침투 흔적)
+3. **보안 권장사항** (구체적인 보안 강화 방법 및 명령어)
+4. **권장 조치** (즉시 취해야 할 조치사항)
+5. **추가 정보** (보안 모범 사례 및 팁)
+
+보안 위협은 심각도 순으로 정리하고, 실행 가능한 구체적인 해결 명령어를 제공해주세요.
+```
+
+### Other Planned Features
+
 - Windows/macOS support
 - Auto-refresh functionality
 - Dark mode
